@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d84a5ad6502c5df4490aea1ca363eaf9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182650
+  packageName: 2D Character - Astronaut
+  packageVersion: 1.0
+  assetPath: Assets/COPY SPRIGHT/2D Character - Astronaut/Animations/hit1_side.controller
+  uploadId: 410765

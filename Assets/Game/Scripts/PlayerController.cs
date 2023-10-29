@@ -12,15 +12,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float acceleration;
     [SerializeField] private float deceleration;
 
+    [SerializeField] private LayerMask groundLayers;
+    [SerializeField] private float playerHeight;
+
     [Header( "Jumping" )]
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldown;
 
     [Header( "References" )]
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Animator anim;
+    [SerializeField] private SpriteRenderer character;
 
     private bool canJump;
-    private bool grounded = true;
+    [SerializeField] private bool grounded;
+
+    private int moveDirection;
 
     void Start( ) {
 
@@ -36,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump( ) {
 
-
+        anim.SetTrigger( "Jump" );
         rb.AddForce( new Vector3( 0, jumpForce, 0 ), ForceMode.Impulse );
 
         Invoke( nameof( ResetJump ), jumpCooldown );
@@ -53,22 +60,25 @@ public class PlayerController : MonoBehaviour
     void Update( ) {
 
         float horizontalInput = Input.GetAxis( "Horizontal" );
-        
+
+        moveDirection = 0;
+
+        grounded = Physics.Raycast( transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayers );
+
         // Move Right
         if ( horizontalInput > 0 ) {
 
             currentSpeed += acceleration * Time.deltaTime;
-    
+            moveDirection = 1;
+
         // Move Left
         } else if ( horizontalInput < 0 ) {
 
             currentSpeed -= acceleration * Time.deltaTime;
+            moveDirection = -1;
 
         // Decelerate
-        } else {
-
-            if ( currentSpeed == 0 )
-                return;
+        } else if ( currentSpeed != 0 ) {
 
             int decelerateDirection = ( currentSpeed > 0 ) ? 1 : -1;
 
@@ -79,6 +89,13 @@ public class PlayerController : MonoBehaviour
 
            
         }
+
+        bool isMoving = moveDirection != 0;
+        anim.SetInteger( "MoveDirection", moveDirection );
+        anim.SetBool( "IsMoving", isMoving );
+        anim.SetBool( "Grounded", grounded );
+
+        character.flipX = ( moveDirection == 1 ) ? true : false;
 
         // Clamp Walk Speed
         if ( currentSpeed > walkSpeed )
@@ -100,6 +117,16 @@ public class PlayerController : MonoBehaviour
 
         MovePlayer( );
 
-    }//
+    }
+
+    private void OnCollisionEnter( Collision collision ) {
+        
+        if ( collision.collider.tag == "Wall" ) {
+            Debug.Log( "COLLIDE" );
+            rb.AddForce( transform.right * 50f * moveDirection, ForceMode.Impulse );
+
+        }
+
+    }
 
 }
