@@ -1,8 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Team: Team Bracket (Team 1)
+ * Course: CSC-440-101
+ * 
+ * Name: Agent
+ * Script Objective: Emulates the player in the main menu to make the menu stand out more.
+ * 
+ */
+
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.TextCore.Text;
+
 
 public class RandomAgentPosition : MonoBehaviour
 {
@@ -47,7 +54,7 @@ public class RandomAgentPosition : MonoBehaviour
         animator.SetBool( "IsMoving", isMoving );
         //animator.SetBool( "Grounded", grounded );
 
-        character.flipX = ( moveDirection == 1 ) ? true : false;
+        character.flipX = ( moveDirection == 1 );
 
     }
     // Update is called once per frame

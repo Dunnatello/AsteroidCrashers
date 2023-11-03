@@ -1,8 +1,15 @@
-using DG.Tweening;
+/*
+ * Team: Team Bracket (Team 1)
+ * Course: CSC-440-101
+ * 
+ * Name: Start Game
+ * Script Objective: Starts the game and handles the countdown sequence.
+ * 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TeamBracket {
@@ -17,6 +24,9 @@ namespace TeamBracket {
         [SerializeField] private Stopwatch stopwatch;
 
         [SerializeField] private List< string > countdownSequence = new( );
+
+        [SerializeField] private GameObject asteroidSpawner;
+
         private int currentIndex = 0;
 
         private bool hasCountdownStarted;
@@ -55,6 +65,8 @@ namespace TeamBracket {
             stopwatch.SetStopwatchType( "Stopwatch" );
             stopwatch.SetStopwatchTime( 0f );
             stopwatch.ToggleStopwatch( true );
+
+            asteroidSpawner.SetActive( true );
 
         }
 

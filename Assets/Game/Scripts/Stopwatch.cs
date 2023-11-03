@@ -1,5 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Team: Team Bracket (Team 1)
+ * Course: CSC-440-101
+ * 
+ * Name: Stopwatch
+ * Script Objective: Keeps track of the player's time spent alive.
+ * 
+ */
 using TMPro;
 using UnityEngine;
 

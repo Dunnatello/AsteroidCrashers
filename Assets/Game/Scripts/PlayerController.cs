@@ -1,5 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Team: Team Bracket (Team 1)
+ * Course: CSC-440-101
+ * 
+ * Name: Player Controller
+ * Script Objective: Allows for player movement in X/Y directions.
+ * 
+ */
+
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -95,7 +102,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool( "IsMoving", isMoving );
         anim.SetBool( "Grounded", grounded );
 
-        character.flipX = ( moveDirection == 1 ) ? true : false;
+        character.flipX = ( moveDirection == 1 );
 
         // Clamp Walk Speed
         if ( currentSpeed > walkSpeed )
@@ -116,16 +123,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate( ) {
 
         MovePlayer( );
-
-    }
-
-    private void OnCollisionEnter( Collision collision ) {
-        
-        if ( collision.collider.tag == "Wall" ) {
-            Debug.Log( "COLLIDE" );
-            rb.AddForce( transform.right * 50f * moveDirection, ForceMode.Impulse );
-
-        }
 
     }
 

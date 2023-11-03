@@ -1,5 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Team: Team Bracket (Team 1)
+ * Course: CSC-440-101
+ * 
+ * Name: Game Manager
+ * Script Objective: Handles game conditions and transitions the player to the high score scene/menu when the game is over.
+ * 
+ */
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -9,22 +16,22 @@ using UnityEngine.SceneManagement;
 namespace TeamBracket {
 
     public class GameManager : MonoBehaviour {
-        private int playerScore;
-        [SerializeField] private TextMeshProUGUI scoreText;
+
+
+        [Header( "Settings" )]
         [SerializeField] private int scoreIncrement;
 
         [Header( "References" )]
+        [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private Stopwatch stopwatch;
-
         [SerializeField] private GameObject gameOverScreen;
-
 
         // Grayscale Settings
         [SerializeField] private Volume globalSettings;
         private ColorCurves grayScale;
 
-
-        private bool isGameComplete = false;
+        private int playerScore;
+        private bool isGameComplete = false; // FIXME: Utilize this to end coroutines in Spawner.
 
         private void Start( ) {
 

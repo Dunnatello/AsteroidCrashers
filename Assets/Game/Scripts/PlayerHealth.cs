@@ -1,4 +1,12 @@
-using System.Collections;
+/*
+ * Team: Team Bracket (Team 1)
+ * Course: CSC-440-101
+ * 
+ * Name: Player Health
+ * Script Objective: Handle the player lives system by respawning the player if they die as well as updating the UI of the player's life count.
+ * 
+ */
+
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;

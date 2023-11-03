@@ -1,5 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Team: Team Bracket (Team 1)
+ * Course: CSC-440-101
+ * 
+ * Name: Projectile Impact
+ * Script Objective: Handles projectile interactions and special effects. Asteroids and rockets both use this script to handle collisions.
+ * 
+ */
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

@@ -1,74 +1,92 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+﻿/*
+ * Team: Team Bracket (Team 1)
+ * Course: CSC-440-101
+ * 
+ * Name: Weapon
+ * Script Objective: Handles weapon interactions and movement. Allows for firing projectiles with customizable settings.
+ * 
+ */
+using TMPro;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
 
+    // References
+    [Header( "References" )]
     [SerializeField] private Transform character;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject currentWeapon;
 
+    // Internal References
     private Transform weaponTransform;
     private SpriteRenderer currentWeaponSprite;
 
+    // Prefabs
     [SerializeField] private GameObject bulletPrefab;
 
+    // UI
+    [SerializeField] private TextMeshProUGUI remainingBulletsText;
+    [SerializeField] private TextMeshProUGUI ammoText;
+
+    [Header( "Weapon Settings" )]
     [SerializeField] private float orbitRotationSpeed = 5f;
-    //[SerializeField] private float minZRotation = -15f;
-    //[SerializeField] private float maxZRotation = 195f;
+
 
     // Weapon Attributes
+    // FIXME: Unserialize ammo and remainingBullets after testing.
     [SerializeField] private int ammo;
     [SerializeField] private int remainingBullets;
+
+    [SerializeField] private bool infiniteAmmo;
+
+    
+
     [SerializeField] private int maxBulletsPerClip;
+    
     [SerializeField] private int bulletsPerTap;
     [SerializeField] private float fireDelay;
     [SerializeField] private float timeBetweenBullets;
-
     [SerializeField] private float bulletForce;
+
+    [SerializeField] private float reloadTime;
 
     private float currentDelay;
     private bool canFire;
+    private bool isReloading = false;
 
     void SetWeaponTransform( ) {
 
         weaponTransform = currentWeapon.transform;
         currentWeaponSprite = currentWeapon.GetComponent< SpriteRenderer >( );
 
-    }
+    } // End of SetWeaponTransform( )
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start( ) {
 
         SetWeaponTransform( );
 
-        ammo = maxBulletsPerClip * 3;
-        remainingBullets = maxBulletsPerClip;
+        Reload( );
 
         canFire = true;
 
-    }
+        UpdateWeaponUI( );
+
+    } // Endof Start( )
 
     void LookAtMousePosition( ) { // Using this for Rotating Weapon Angle: https://www.youtube.com/watch?v=Geb_PnF1wOk
 
+        // Set Weapon Position
         Vector3 characterPosition = character.position;
         transform.position = characterPosition;
 
+        // Calculate Facing Direction
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint( Input.mousePosition );
         Vector3 direction = mousePosition - characterPosition;
 
-        //Vector3 direction = Input.mousePosition - Camera.main.WorldToScreenPoint( weaponTransform.position );
-
         float pointAngle = Mathf.Atan2( direction.y, direction.x ) * Mathf.Rad2Deg;
-        //float orbitAngle = Mathf.Clamp( pointAngle, minZRotation, maxZRotation );
 
-
-        //Debug.Log( pointAngle + " " + orbitAngle + ( pointAngle == orbitAngle ).ToString( ) );
-
-        //transform.position = characterPosition + offsetFromCharacter;
 
         // Point Weapon Towards Mouse
         weaponTransform.rotation = Quaternion.AngleAxis( pointAngle, Vector3.forward );
@@ -76,17 +94,11 @@ public class Weapon : MonoBehaviour
         // Orbit Weapon Around Player
         transform.rotation = Quaternion.Slerp( transform.rotation, Quaternion.Euler( 0, 0, pointAngle ), orbitRotationSpeed * Time.deltaTime );
 
-/*        // Clamp Z Axis Movement
-        Vector3 currentEulerAngles = transform.localEulerAngles;
-        currentEulerAngles.z = Mathf.Clamp( currentEulerAngles.z, minZRotation, maxZRotation );
-
-        // Apply Clamp Correction
-        transform.localEulerAngles = currentEulerAngles;*/
-
+        // Flip Weapon Based on Orientation
         currentWeaponSprite.flipY = ( transform.localEulerAngles.z > 90f && transform.localEulerAngles.z < 270 );
 
 
-    }
+    } // Endof LookAtMousePosition( )
     
     void ShootBullet( ) {
 
@@ -104,12 +116,79 @@ public class Weapon : MonoBehaviour
         Vector3 bulletDirection = firePoint.right * bulletForce;
         rigidbody.AddForce( bulletDirection, ForceMode.Force );
 
+    } // Endof ShootBullet( )
+
+    void UpdateWeaponUI( ) {
+
+        remainingBulletsText.text = ( isReloading ) ? "<b>-</b>" : "<b>" + remainingBullets.ToString( ) + "</b>";
+        ammoText.text = ( infiniteAmmo ) ? "∞" : ammo.ToString( );
+
+    }
+
+    void Reload( ) {
+
+
+        if ( infiniteAmmo ) {
+
+            remainingBullets = maxBulletsPerClip;
+
+        }
+        else {
+
+            // If current ammo exceeds the required bullets, subtract maxBulletsPerClip from ammo.
+            if ( ammo > maxBulletsPerClip ) {
+
+                int bulletsToSubtract = maxBulletsPerClip - remainingBullets;
+
+                remainingBullets = maxBulletsPerClip;
+                ammo -= bulletsToSubtract;
+
+            }
+            else { // Set remaining bullets equal to the rest of the ammo left.
+
+                remainingBullets = ammo;
+                ammo = 0;
+
+            }
+
+        }
+
+        isReloading = false;
+        UpdateWeaponUI( );
+
+    } // Endof Reload( )
+
+    void StartReload( ) {
+
+        // Weapon does not need to be reloaded.
+        if ( remainingBullets == maxBulletsPerClip )
+            return;
+
+        isReloading = true;
+        UpdateWeaponUI( );
+
+        Invoke( nameof( Reload ), reloadTime );
+
     }
 
     void Fire( ) {
 
+        if ( isReloading ) {
 
-        remainingBullets -= bulletsPerTap;
+            Debug.Log( "FIXME: Play Error Sound" );
+            return;
+
+        }
+
+        int bulletsToFire = bulletsPerTap;
+
+        if ( remainingBullets < bulletsPerTap )
+            bulletsToFire = remainingBullets;
+
+       
+
+        remainingBullets -= bulletsToFire;
+
 
         if ( remainingBullets < 0 ) {
 
@@ -118,9 +197,20 @@ public class Weapon : MonoBehaviour
 
         }
 
-        if ( bulletsPerTap > 1 ) {
+        UpdateWeaponUI( );
 
-            for ( int i = 0; i < bulletsPerTap; i++ ) {
+
+        if ( !canFire ) {
+
+            // FIXME: Play Weapon Empty Sound
+            Debug.Log( "FIXME: Weapon Empty Sound" );
+            return;
+
+        }
+
+        if ( bulletsToFire > 1 ) {
+
+            for ( int i = 0; i < bulletsToFire; i++ ) {
 
                 Invoke( nameof( ShootBullet ), timeBetweenBullets * i );
 
@@ -132,31 +222,36 @@ public class Weapon : MonoBehaviour
 
         }
 
-        
         currentDelay = fireDelay;
 
-    }
+    } // Endof Fire( )
+
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update( ) {
         
+        // If weapon is attached to the player, allow weapon movement.
         if ( weaponTransform ) {
 
             LookAtMousePosition( );
 
         }
 
+        // Cannot fire gun, so do an early return here.
         if ( currentDelay > 0f ) {
 
             currentDelay -= Time.deltaTime;
             return;
         }
 
-        if ( Input.GetMouseButtonDown( 0 ) ) {
-
+        // Fire Button
+        if ( Input.GetMouseButtonDown( 0 ) )
             Fire( );
 
-        }
-    }
-}
+        // Reload Button
+        if ( Input.GetKeyDown( KeyCode.R ) )
+            StartReload( );
+
+    } // Endof Update()
+
+} // Endof Weapon
