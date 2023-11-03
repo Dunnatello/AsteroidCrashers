@@ -16,8 +16,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
 
     [SerializeField] private float orbitRotationSpeed = 5f;
-    [SerializeField] private float minZRotation = -15f;
-    [SerializeField] private float maxZRotation = 195f;
+    //[SerializeField] private float minZRotation = -15f;
+    //[SerializeField] private float maxZRotation = 195f;
 
     // Weapon Attributes
     [SerializeField] private int ammo;

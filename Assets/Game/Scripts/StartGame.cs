@@ -10,14 +10,13 @@ namespace TeamBracket {
 
         [SerializeField] private PlayerController movementScript;
 
-        [SerializeField] private GameObject crosshair;
         [SerializeField] private GameObject CountdownUI;
         [SerializeField] private TextMeshProUGUI countdownText;
         [SerializeField] private Animator animator;
 
         [SerializeField] private Stopwatch stopwatch;
 
-        [SerializeField] private List< string > countdownSequence = new List< string >( );
+        [SerializeField] private List< string > countdownSequence = new( );
         private int currentIndex = 0;
 
         private bool hasCountdownStarted;
@@ -27,24 +26,13 @@ namespace TeamBracket {
 
             CountdownUI.SetActive( false );
 
-        }
-
-        void Countdown( string text ) {
-
-            countdownText.text = text;
-
-            countdownText.DOFade( 1f, 0.5f );
+            StartCountdown( );
+            movementScript.enabled = false;
 
         }
 
-        void ResetAnimator( ) {
-
-            animator.SetBool( "IsPlaying", false );
-
-        }
         private IEnumerator CountdownSequence( ) {
 
-            crosshair.SetActive( false );
             yield return new WaitForSeconds( 0.25f );
 
             CountdownUI.SetActive( true );
@@ -61,13 +49,9 @@ namespace TeamBracket {
             }
 
             CountdownUI.SetActive( false );
-            crosshair.SetActive( true );
-
-            Debug.Log( "Sequence Completed" );
 
             movementScript.enabled = true;
 
-            // FIXME: Change this to take level requirements.
             stopwatch.SetStopwatchType( "Stopwatch" );
             stopwatch.SetStopwatchTime( 0f );
             stopwatch.ToggleStopwatch( true );
@@ -79,6 +63,7 @@ namespace TeamBracket {
             if ( hasCountdownStarted )
                 return;
 
+            hasCountdownStarted = true;
 
             StartCoroutine( CountdownSequence( ) );
 
