@@ -34,11 +34,12 @@ public class Spawner : MonoBehaviour
             // Create each object based on numObjectsToSpawn's value.
             for ( int i = 0; i < numObjectsToSpawn; i++ ) {
 
-                GameObject newSpawnedObject = Instantiate( spawnObjectPrefab );
+                // Set random position based on horizontal spread and a random velocity based on the maxSpeed.
+                Vector3 newSpawnPosition = transform.position + new Vector3( Random.Range( -spawnHorizontalSpread, spawnHorizontalSpread ), 0, 0 );
+
+                GameObject newSpawnedObject = Instantiate( spawnObjectPrefab, newSpawnPosition, Quaternion.identity );
                 Rigidbody rb = newSpawnedObject.GetComponent< Rigidbody >( );
 
-                // Set random position based on horizontal spread and a random velocity based on the maxSpeed.
-                newSpawnedObject.transform.position = transform.position + new Vector3( Random.Range( -spawnHorizontalSpread, spawnHorizontalSpread ), 0, 0 );
                 rb.velocity = new( Random.Range( -maxSpeed, maxSpeed ), rb.velocity.y, Random.Range( -maxSpeed, maxSpeed ) );
                 
                 rb.angularVelocity = new( 0f, 0f, Random.Range( -1f, 1f ) );
