@@ -19,6 +19,8 @@ namespace TeamBracket {
         [SerializeField] private float maxSpeed;
         [SerializeField] private float spawnHorizontalSpread;
 
+        [SerializeField] private GameManager gameManager;
+
         private IEnumerator spawnCoroutine;
 
         // Spawn objects forever until the current game ends.
@@ -45,6 +47,8 @@ namespace TeamBracket {
                     rb.angularVelocity = new( 0f, 0f, Random.Range( -1f, 1f ) );
 
                 }
+
+                gameManager.AsteroidsSpawned( numObjectsToSpawn );
 
             } // End of while loop
 

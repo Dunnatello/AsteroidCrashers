@@ -54,6 +54,8 @@ namespace TeamBracket.WeaponSystem {
         private bool canFire;
         private bool isReloading = false;
 
+        public float FireDelay => fireDelay;
+
         private void SetWeaponTransform( ) {
 
             weaponTransform = currentWeapon.transform;

@@ -208,6 +208,7 @@ MonoBehaviour:
   gameOverScreen: {fileID: 778792509}
   highScoreManager: {fileID: 1375228945}
   finalScoreText: {fileID: 254053408}
+  weaponScript: {fileID: 273508483}
   globalSettings: {fileID: 1160234426}
 --- !u!1 &118895225
 GameObject:
@@ -1776,6 +1777,51 @@ Transform:
   m_LocalPosition: {x: 7.44, y: 7.27, z: 78.58}
   m_LocalScale: {x: 0.73, y: 0.73, z: 0.73}
   m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &754966669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 754966671}
+  - component: {fileID: 754966670}
+  m_Layer: 0
+  m_Name: Cheats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &754966670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754966669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a643c3728ffef4baf7b3f8b2a892a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 34409997}
+--- !u!4 &754966671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754966669}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 742.5557, y: 433.8396, z: -910.346}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4185,6 +4231,7 @@ MonoBehaviour:
     type: 3}
   maxSpeed: 2
   spawnHorizontalSpread: 10
+  gameManager: {fileID: 34409997}
 --- !u!1 &1846080413
 GameObject:
   m_ObjectHideFlags: 0
@@ -5040,3 +5087,4 @@ SceneRoots:
   - {fileID: 727885478}
   - {fileID: 1636382001}
   - {fileID: 1029859843}
+  - {fileID: 754966671}
