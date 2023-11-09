@@ -9,7 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Game/Scenes/Menu.unity
+    guid: b2354bf79b13c2148b5c6831add8d591
+  - enabled: 1
     path: Assets/Game/Scenes/Platformer.unity
     guid: 12aa48784030cb74d8fc01d218344c97
+  - enabled: 1
+    path: Assets/Game/Scenes/Scores.unity
+    guid: 7319d61e78d4e60438ea40f9629132bd
+  - enabled: 1
+    path: Assets/Game/Scenes/Error.unity
+    guid: 4ac500919c994fe4ba81ea3fc4c12cf7
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

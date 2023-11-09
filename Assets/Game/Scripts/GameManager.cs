@@ -7,6 +7,7 @@
  * 
  */
 
+using TeamBracket.HighScores;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -25,17 +26,21 @@ namespace TeamBracket {
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private Stopwatch stopwatch;
         [SerializeField] private GameObject gameOverScreen;
+        [SerializeField] private HighScoreManager highScoreManager;
+
+        [SerializeField] private TextMeshProUGUI finalScoreText;
 
         // Grayscale Settings
         [SerializeField] private Volume globalSettings;
         private ColorCurves grayScale;
 
-        private int playerScore;
-        private bool isGameComplete = false; // FIXME: Utilize this to end coroutines in Spawner.
+        private int asteroidsDestroyed;
 
+        private readonly TimeStringCreator timeStringCreator = new( );
+        
         private void Start( ) {
 
-            foreach ( var component in globalSettings.profile.components ) {
+            foreach ( VolumeComponent component in globalSettings.profile.components ) {
 
                 if ( component is ColorCurves ) {
 
@@ -55,19 +60,19 @@ namespace TeamBracket {
 
         }
 
-        void UpdateUI( ) {
+        private void UpdateUI( ) {
 
-            scoreText.text = "<b>Score</b>\n<mspace=25>" + playerScore + "</mspace>";
+            scoreText.text = "<b>Hit</b>\n<mspace=25>" + asteroidsDestroyed + "</mspace>";
         }
 
-        void ToggleGrayScale( bool isActive ) {
+        private void ToggleGrayScale( bool isActive ) {
 
             grayScale.active = isActive;
 
         }
         public void AddScore( ) {
 
-            playerScore += scoreIncrement;
+            asteroidsDestroyed += scoreIncrement;
             UpdateUI( );
 
         }
@@ -78,9 +83,26 @@ namespace TeamBracket {
 
             Debug.Log( "GAME OVER" );
             stopwatch.ToggleStopwatch( false );
+
+            float timeSurvived = stopwatch.GetStopwatchTime( );
+
+            // Add Score to List
+            highScoreManager.AddScore( asteroidsDestroyed, timeSurvived );
+
+            // Get Overall Score
+            HighScore currentScore = highScoreManager.GetScore( asteroidsDestroyed, timeSurvived );
+
+            // Display Final Score
+
+            finalScoreText.text = string.Format( "<b>Final Score:</b>\n<size=60>{0:0.00}</size>\n\n<b>Asteroids Destroyed:</b>\n{1}\n<b>Time Survived:</b>\n{2}",
+                                                 currentScore.overallScore, currentScore.asteroidsDestroyed, timeStringCreator.GetNewTimeString( currentScore.timeSurvived ) );
+            // Show Game Over Screen
             gameOverScreen.SetActive( true );
 
+            // Slow Down Time
             Time.timeScale = 0.4f;
+
+
 
         }
 

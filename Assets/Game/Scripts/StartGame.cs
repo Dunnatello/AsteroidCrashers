@@ -9,6 +9,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TeamBracket.Movement;
 using TMPro;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ namespace TeamBracket {
 
         [SerializeField] private Stopwatch stopwatch;
 
-        [SerializeField] private List< string > countdownSequence = new( );
+        [SerializeField] private List<string> countdownSequence = new( );
 
         [SerializeField] private GameObject asteroidSpawner;
 
@@ -32,7 +33,7 @@ namespace TeamBracket {
         private bool hasCountdownStarted;
 
         // Start is called before the first frame update
-        void Start( ) {
+        private void Start( ) {
 
             CountdownUI.SetActive( false );
 
@@ -77,7 +78,7 @@ namespace TeamBracket {
 
             hasCountdownStarted = true;
 
-            StartCoroutine( CountdownSequence( ) );
+            _ = StartCoroutine( CountdownSequence( ) );
 
         }
 

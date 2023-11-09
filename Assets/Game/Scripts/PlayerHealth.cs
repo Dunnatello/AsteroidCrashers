@@ -27,7 +27,7 @@ namespace TeamBracket {
         [SerializeField] private float respawnTime = 3f;
 
         [Header( "References" )]
-        [SerializeField] private List< GameObject > UILifeCounter = new( );
+        [SerializeField] private List<GameObject> UILifeCounter = new( );
         [SerializeField] private Transform player;
         private Rigidbody playerRb;
         private Animator playerAnimator;
@@ -35,8 +35,8 @@ namespace TeamBracket {
         [SerializeField] private AudioSource playerDeathSound;
 
         [SerializeField] private GameManager gameManager;
-       
-        void EndImmortality( ) {
+
+        private void EndImmortality( ) {
 
             playerAnimator.SetBool( "IsFading", false );
 
@@ -97,17 +97,17 @@ namespace TeamBracket {
 
         }
 
-        void Start( ) {
+        private void Start( ) {
 
             livesLeft = totalLives;
 
-            playerRb = player.gameObject.GetComponent< Rigidbody >( );
-            playerAnimator = player.gameObject.GetComponent< Animator >( );
+            playerRb = player.gameObject.GetComponent<Rigidbody>( );
+            playerAnimator = player.gameObject.GetComponent<Animator>( );
 
         }
 
         // Update is called once per frame
-        void Update( ) {
+        private void Update( ) {
 
             if ( invincibilityTimeLeft > 0 ) {
 

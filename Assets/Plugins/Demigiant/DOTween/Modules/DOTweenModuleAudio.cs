@@ -2,7 +2,6 @@
 // Created: 2018/07/13
 
 #if true // MODULE_MARKER
-using System;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine;
@@ -10,11 +9,8 @@ using UnityEngine;
 using UnityEngine.Audio; // Required for AudioMixer
 #endif
 
-#pragma warning disable 1591
-namespace DG.Tweening
-{
-	public static class DOTweenModuleAudio
-    {
+namespace DG.Tweening {
+    public static class DOTweenModuleAudio {
         #region Shortcuts
 
         #region Audio
@@ -22,22 +18,20 @@ namespace DG.Tweening
         /// <summary>Tweens an AudioSource's volume to the given value.
         /// Also stores the AudioSource as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach (0 to 1)</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<float, float, FloatOptions> DOFade(this AudioSource target, float endValue, float duration)
-        {
-            if (endValue < 0) endValue = 0;
-            else if (endValue > 1) endValue = 1;
-            TweenerCore<float, float, FloatOptions> t = DOTween.To(() => target.volume, x => target.volume = x, endValue, duration);
-            t.SetTarget(target);
+        public static TweenerCore<float, float, FloatOptions> DOFade( this AudioSource target, float endValue, float duration ) {
+            if ( endValue < 0 ) endValue = 0;
+            else if ( endValue > 1 ) endValue = 1;
+            TweenerCore<float, float, FloatOptions> t = DOTween.To( ( ) => target.volume, x => target.volume = x, endValue, duration );
+            _ = t.SetTarget( target );
             return t;
         }
 
         /// <summary>Tweens an AudioSource's pitch to the given value.
         /// Also stores the AudioSource as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<float, float, FloatOptions> DOPitch(this AudioSource target, float endValue, float duration)
-        {
-            TweenerCore<float, float, FloatOptions> t = DOTween.To(() => target.pitch, x => target.pitch = x, endValue, duration);
-            t.SetTarget(target);
+        public static TweenerCore<float, float, FloatOptions> DOPitch( this AudioSource target, float endValue, float duration ) {
+            TweenerCore<float, float, FloatOptions> t = DOTween.To( ( ) => target.pitch, x => target.pitch = x, endValue, duration );
+            _ = t.SetTarget( target );
             return t;
         }
 
@@ -51,14 +45,12 @@ namespace DG.Tweening
         /// Note that you need to manually expose a float in an AudioMixerGroup in order to be able to tween it from an AudioMixer.</summary>
         /// <param name="floatName">Name given to the exposed float to set</param>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<float, float, FloatOptions> DOSetFloat(this AudioMixer target, string floatName, float endValue, float duration)
-        {
-            TweenerCore<float, float, FloatOptions> t = DOTween.To(()=> {
-                    float currVal;
-                    target.GetFloat(floatName, out currVal);
-                    return currVal;
-                }, x=> target.SetFloat(floatName, x), endValue, duration);
-            t.SetTarget(target);
+        public static TweenerCore<float, float, FloatOptions> DOSetFloat( this AudioMixer target, string floatName, float endValue, float duration ) {
+            TweenerCore<float, float, FloatOptions> t = DOTween.To( ( ) => {
+                _ = target.GetFloat( floatName, out float currVal );
+                return currVal;
+            }, x => target.SetFloat( floatName, x ), endValue, duration );
+            _ = t.SetTarget( target );
             return t;
         }
 
@@ -72,9 +64,8 @@ namespace DG.Tweening
         /// </summary>
         /// <param name="withCallbacks">For Sequences only: if TRUE also internal Sequence callbacks will be fired,
         /// otherwise they will be ignored</param>
-        public static int DOComplete(this AudioMixer target, bool withCallbacks = false)
-        {
-            return DOTween.Complete(target, withCallbacks);
+        public static int DOComplete( this AudioMixer target, bool withCallbacks = false ) {
+            return DOTween.Complete( target, withCallbacks );
         }
 
         /// <summary>
@@ -83,9 +74,8 @@ namespace DG.Tweening
         /// and returns the total number of tweens killed.
         /// </summary>
         /// <param name="complete">If TRUE completes the tween before killing it</param>
-        public static int DOKill(this AudioMixer target, bool complete = false)
-        {
-            return DOTween.Kill(target, complete);
+        public static int DOKill( this AudioMixer target, bool complete = false ) {
+            return DOTween.Kill( target, complete );
         }
 
         /// <summary>
@@ -93,9 +83,8 @@ namespace DG.Tweening
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens flipped.
         /// </summary>
-        public static int DOFlip(this AudioMixer target)
-        {
-            return DOTween.Flip(target);
+        public static int DOFlip( this AudioMixer target ) {
+            return DOTween.Flip( target );
         }
 
         /// <summary>
@@ -106,9 +95,8 @@ namespace DG.Tweening
         /// <param name="to">Time position to reach
         /// (if higher than the whole tween duration the tween will simply reach its end)</param>
         /// <param name="andPlay">If TRUE will play the tween after reaching the given position, otherwise it will pause it</param>
-        public static int DOGoto(this AudioMixer target, float to, bool andPlay = false)
-        {
-            return DOTween.Goto(target, to, andPlay);
+        public static int DOGoto( this AudioMixer target, float to, bool andPlay = false ) {
+            return DOTween.Goto( target, to, andPlay );
         }
 
         /// <summary>
@@ -116,9 +104,8 @@ namespace DG.Tweening
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens paused.
         /// </summary>
-        public static int DOPause(this AudioMixer target)
-        {
-            return DOTween.Pause(target);
+        public static int DOPause( this AudioMixer target ) {
+            return DOTween.Pause( target );
         }
 
         /// <summary>
@@ -126,9 +113,8 @@ namespace DG.Tweening
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens played.
         /// </summary>
-        public static int DOPlay(this AudioMixer target)
-        {
-            return DOTween.Play(target);
+        public static int DOPlay( this AudioMixer target ) {
+            return DOTween.Play( target );
         }
 
         /// <summary>
@@ -136,9 +122,8 @@ namespace DG.Tweening
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens played.
         /// </summary>
-        public static int DOPlayBackwards(this AudioMixer target)
-        {
-            return DOTween.PlayBackwards(target);
+        public static int DOPlayBackwards( this AudioMixer target ) {
+            return DOTween.PlayBackwards( target );
         }
 
         /// <summary>
@@ -146,9 +131,8 @@ namespace DG.Tweening
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens played.
         /// </summary>
-        public static int DOPlayForward(this AudioMixer target)
-        {
-            return DOTween.PlayForward(target);
+        public static int DOPlayForward( this AudioMixer target ) {
+            return DOTween.PlayForward( target );
         }
 
         /// <summary>
@@ -156,9 +140,8 @@ namespace DG.Tweening
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens restarted.
         /// </summary>
-        public static int DORestart(this AudioMixer target)
-        {
-            return DOTween.Restart(target);
+        public static int DORestart( this AudioMixer target ) {
+            return DOTween.Restart( target );
         }
 
         /// <summary>
@@ -166,9 +149,8 @@ namespace DG.Tweening
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens rewinded.
         /// </summary>
-        public static int DORewind(this AudioMixer target)
-        {
-            return DOTween.Rewind(target);
+        public static int DORewind( this AudioMixer target ) {
+            return DOTween.Rewind( target );
         }
 
         /// <summary>
@@ -176,9 +158,8 @@ namespace DG.Tweening
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens rewinded.
         /// </summary>
-        public static int DOSmoothRewind(this AudioMixer target)
-        {
-            return DOTween.SmoothRewind(target);
+        public static int DOSmoothRewind( this AudioMixer target ) {
+            return DOTween.SmoothRewind( target );
         }
 
         /// <summary>
@@ -186,9 +167,8 @@ namespace DG.Tweening
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens involved.
         /// </summary>
-        public static int DOTogglePause(this AudioMixer target)
-        {
-            return DOTween.TogglePause(target);
+        public static int DOTogglePause( this AudioMixer target ) {
+            return DOTween.TogglePause( target );
         }
 
         #endregion

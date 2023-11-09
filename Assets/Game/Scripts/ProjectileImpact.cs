@@ -68,7 +68,7 @@ namespace TeamBracket {
             }
             else if ( collision.collider.CompareTag( "Player" ) ) {
 
-                if ( collision.gameObject.TryGetComponent<PlayerHealth>( out var playerHealth ) ) {
+                if ( collision.gameObject.TryGetComponent<PlayerHealth>( out PlayerHealth playerHealth ) ) {
 
                     playerHealth.PlayerDied( false );
 
@@ -85,13 +85,13 @@ namespace TeamBracket {
 
             isAsteroid = this.gameObject.CompareTag( "Asteroid" );
 
-            
+
             if ( SceneManager.GetActiveScene( ).name != "Menu" )
-                gameManager = GameObject.Find( "GameManager" ).GetComponent< GameManager >( );
-            
-            spriteRenderer = GetComponent< SpriteRenderer >( );
-            explosionSound = GetComponent< AudioSource >( );
-            rb = GetComponent< Rigidbody >( );
+                gameManager = GameObject.Find( "GameManager" ).GetComponent<GameManager>( );
+
+            spriteRenderer = GetComponent<SpriteRenderer>( );
+            explosionSound = GetComponent<AudioSource>( );
+            rb = GetComponent<Rigidbody>( );
 
             rb.sleepThreshold = 0;
 

@@ -17,8 +17,8 @@ namespace TeamBracket {
         private float currentTime = 0f;
 
         private bool isPlaying;
+        private readonly TimeStringCreator timeStringCreator = new( );
 
-        private readonly float sixtyDivisor = 1f / 60f;
 
         private int direction = 1;
 
@@ -47,21 +47,16 @@ namespace TeamBracket {
 
         }
 
-        void UpdateUI( ) {
 
-            int hours = Mathf.FloorToInt( currentTime * sixtyDivisor * sixtyDivisor );
-            int minutes = Mathf.FloorToInt( currentTime * sixtyDivisor );
-            int seconds = Mathf.FloorToInt( currentTime % 60 );
-            int milliseconds = Mathf.FloorToInt( ( currentTime * 100f ) % 100 );
 
-            string newTimeString = string.Format( "<mspace=mspace=25>{0:00}:{1:00}:{2:00}.{3:00}</mspace>", hours, minutes, seconds, milliseconds % 100 );
+        private void UpdateUI( ) {
 
-            stopwatchText.text = newTimeString;
+            stopwatchText.text = "<mspace=mspace=25>" + timeStringCreator.GetNewTimeString( currentTime ) + "</mspace>";
 
         }
 
         // Update is called once per frame
-        void Update( ) {
+        private void Update( ) {
 
             if ( !isPlaying )
                 return;

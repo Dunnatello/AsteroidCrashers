@@ -11,18 +11,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class RandomizeSprite : MonoBehaviour
-{
+namespace TeamBracket {
+    public class RandomizeSprite : MonoBehaviour {
 
-    [SerializeField] private List< Sprite > spriteList = new( );
-    private SpriteRenderer spriteRenderer;
+        [SerializeField] private List<Sprite> spriteList = new( );
+        private SpriteRenderer spriteRenderer;
 
-    // Start is called before the first frame update
-    void Start( ) {
+        // Start is called before the first frame update
+        private void Start( ) {
 
-        // Randomize Sprite & Assign Choice to Sprite Renderer Component
-        spriteRenderer = GetComponent< SpriteRenderer >( );
-        spriteRenderer.sprite = spriteList.ElementAt( Random.Range( 0, spriteList.Count ) );
+            // Randomize Sprite & Assign Choice to Sprite Renderer Component
+            spriteRenderer = GetComponent<SpriteRenderer>( );
+            spriteRenderer.sprite = spriteList.ElementAt( Random.Range( 0, spriteList.Count ) );
+
+        }
 
     }
 
