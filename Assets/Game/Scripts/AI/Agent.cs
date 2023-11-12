@@ -12,7 +12,7 @@ using UnityEngine.AI;
 
 
 namespace TeamBracket.AI {
-    public class RandomAgentPosition : MonoBehaviour {
+    public class Agent : MonoBehaviour {
 
 
         private NavMeshAgent agent;
@@ -35,10 +35,14 @@ namespace TeamBracket.AI {
 
         private void GoToRandomPosition( ) {
 
-            Vector3 newPosition = new( Random.Range( -15, 15 ), 1.5f, 0f );
-            _ = agent.SetDestination( newPosition );
+            if ( gameObject.activeInHierarchy ) {
 
-            lookingForDestination = true;
+                Vector3 newPosition = new( Random.Range( -15, 15 ), 1.5f, 0f );
+                _ = agent.SetDestination( newPosition );
+
+                lookingForDestination = true;
+
+            }
 
         }
 

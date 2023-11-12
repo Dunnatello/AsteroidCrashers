@@ -36,6 +36,8 @@ namespace TeamBracket {
 
         [SerializeField] private GameManager gameManager;
 
+        [SerializeField] private ContextualNotifications notificationScript;
+
         private void EndImmortality( ) {
 
             playerAnimator.SetBool( "IsFading", false );
@@ -57,6 +59,8 @@ namespace TeamBracket {
             playerRb.velocity = Vector3.zero;
             playerRb.angularVelocity = Vector3.zero;
 
+            if ( notificationScript != null )
+                notificationScript.ToggleTextVisiblity( "Respawn", false );
 
 
         }
@@ -80,6 +84,9 @@ namespace TeamBracket {
                     return;
 
                 }
+
+                if ( notificationScript != null )
+                    notificationScript.ToggleTextVisiblity( "Respawn", true );
 
             }
 

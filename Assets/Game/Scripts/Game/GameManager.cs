@@ -30,7 +30,9 @@ namespace TeamBracket {
         [SerializeField] private HighScoreManager highScoreManager;
 
         [SerializeField] private TextMeshProUGUI finalScoreText;
+
         [SerializeField] private Weapon weaponScript;
+        [SerializeField] private Spawner spawnerScript;
 
         // Grayscale Settings
         [SerializeField] private Volume globalSettings;
@@ -44,7 +46,7 @@ namespace TeamBracket {
         private float timeSinceLastScoreModification = 0f;
         private readonly TimeStringCreator timeStringCreator = new( );
 
-        private const float toleranceEpsilon = 0.0001f;
+        private const float ToleranceEpsilon = 0.0001f;
 
         private void Start( ) {
 
@@ -75,7 +77,7 @@ namespace TeamBracket {
             }*/
 
 
-            if ( asteroidsDestroyed > totalAsteroidsSpawned ) {
+            if ( asteroidsDestroyed > totalAsteroidsSpawned || asteroidsDestroyed > prevAsteroidsDestroyed + 3 ) {
 
                 SceneManager.LoadScene( "Error" );
 
@@ -135,9 +137,17 @@ namespace TeamBracket {
             if ( ( asteroidsDestroyed > 0 ) && ( asteroidsDestroyed > totalAsteroidsSpawned ) )
                 isScoreValid = false;
 
+
             // If the time between asteroids destroyed is less than the weapon's actual fire delay, invalidate the score.
-            if ( ( Mathf.Abs( timeSurvived / Mathf.Max( 1, asteroidsDestroyed ) ) - weaponScript.FireDelay ) < toleranceEpsilon )
+            if ( ( Mathf.Abs( timeSurvived / Mathf.Max( 1, asteroidsDestroyed ) ) - weaponScript.FireDelay ) < ToleranceEpsilon )
                 isScoreValid = false;
+
+
+            // If the total number of asteroids spawned exceeds the amount possible per interval, invalide the score.
+            if ( ( ( totalAsteroidsSpawned / timeSurvived ) * spawnerScript.SpawnInterval ) > spawnerScript.MaxObjectsPerSpawn )
+                isScoreValid = false;
+
+
 
             return isScoreValid;
 

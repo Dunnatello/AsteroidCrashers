@@ -17,6 +17,7 @@ namespace TeamBracket.WeaponSystem {
         [SerializeField] private Transform character;
         [SerializeField] private Transform firePoint;
         [SerializeField] private GameObject currentWeapon;
+        [SerializeField] private ContextualNotifications notificationScript;
 
         // Internal References
         private Transform weaponTransform;
@@ -157,6 +158,8 @@ namespace TeamBracket.WeaponSystem {
             isReloading = false;
             UpdateWeaponUI( );
 
+            notificationScript.ToggleTextVisiblity( "Reload", false );
+
         } // Endof Reload( )
 
         private void StartReload( ) {
@@ -164,6 +167,8 @@ namespace TeamBracket.WeaponSystem {
             // Weapon does not need to be reloaded.
             if ( remainingBullets == maxBulletsPerClip )
                 return;
+
+            notificationScript.ToggleTextVisiblity( "Reload", true );
 
             isReloading = true;
             UpdateWeaponUI( );

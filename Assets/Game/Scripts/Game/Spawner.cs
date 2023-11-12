@@ -21,6 +21,10 @@ namespace TeamBracket {
 
         [SerializeField] private GameManager gameManager;
 
+
+        public float SpawnInterval => spawnInterval;
+        public float MaxObjectsPerSpawn => maxObjectsPerSpawn;
+
         private IEnumerator spawnCoroutine;
 
         // Spawn objects forever until the current game ends.
@@ -48,7 +52,8 @@ namespace TeamBracket {
 
                 }
 
-                gameManager.AsteroidsSpawned( numObjectsToSpawn );
+                if ( gameManager != null )
+                    gameManager.AsteroidsSpawned( numObjectsToSpawn );
 
             } // End of while loop
 

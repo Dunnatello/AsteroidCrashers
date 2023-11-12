@@ -43,10 +43,12 @@ namespace TeamBracket.HighScores {
 
         void ShowScores( ) {
 
+            // Get all high scores.
             List<HighScore> highScores = highScoreManager.HighScores;
 
             for ( int i = 0; i < 10; i++ ) {
 
+                // If current index exceeds the list of high scores, break from the list so that the loop doesn't go out of bounds.
                 if ( i > highScores.Count - 1 )
                     break;
 
