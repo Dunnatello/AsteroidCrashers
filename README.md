@@ -10,8 +10,8 @@ Our main objective is to secure the high scores aspect of the game to make it ha
 
 ### Team Members
 
-**Eric Diep** - Penetration Testing, Contact, Documentation
-**Michael Dunn** - Game Development, Documentation
-**Darius Haynes** - Penetration Testing, Risk Analysis
-**Talha Khan** - Game Development, Risk Analysis
-**Zachary Neal** - Penetration Testing, Risk Analysis
+**Eric Diep** - Penetration Testing, Contact, Documentation  
+**Michael Dunn** - Game Development, Documentation  
+**Darius Haynes** - Penetration Testing, Risk Analysis  
+**Talha Khan** - Game Development, Risk Analysis  
+**Zachary Neal** - Penetration Testing, Risk Analysis  
