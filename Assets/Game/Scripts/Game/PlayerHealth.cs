@@ -72,6 +72,7 @@ namespace TeamBracket {
             player.gameObject.SetActive( false );
             playerDeathSound.Play( );
 
+            // Make sure that the current scene is not the main menu scene. That scene features an AI agent, but it has infinite lives.
             if ( SceneManager.GetActiveScene( ).name != "Menu" ) {
 
                 UpdateLifeCountUI( );
@@ -85,6 +86,7 @@ namespace TeamBracket {
 
                 }
 
+                // Show "Respawning..." Text on UI
                 if ( notificationScript != null )
                     notificationScript.ToggleTextVisiblity( "Respawn", true );
 

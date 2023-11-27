@@ -50,22 +50,25 @@ namespace TeamBracket {
 
         private void OnCollisionEnter( Collision collision ) {
 
+            // Current Object is Asteroid. If the other object is an asteroid or a missile, early return here.
             if ( isAsteroid )
                 if ( collision.collider.CompareTag( "Asteroid" ) || collision.collider.CompareTag( "Missile" ) )
                     return;
 
+            // If this collision has already been handled, early return.
             if ( hasHitTarget )
                 return;
 
             hasHitTarget = true;
 
+            // Hit Asteroid
             if ( collision.collider.CompareTag( "Asteroid" ) ) {
 
-                Debug.Log( "HIT ASTEROID" );
                 gameManager.AddScore( );
                 Destroy( collision.gameObject );
 
             }
+            // Hit Player
             else if ( collision.collider.CompareTag( "Player" ) ) {
 
                 if ( collision.gameObject.TryGetComponent<PlayerHealth>( out PlayerHealth playerHealth ) ) {
@@ -76,6 +79,7 @@ namespace TeamBracket {
 
             }
 
+            // Explode Asteroid/Missile
             Explode( );
 
 
