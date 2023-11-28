@@ -46,7 +46,7 @@ namespace TeamBracket.Audio {
                 float storedVolumeValue = PlayerPrefs.GetFloat( sliderName );
                 Debug.Log( "STORED VALUE: " + storedVolumeValue.ToString( ) );
 
-                SetSliderValue( sliderName, DecibelToPercentage( storedVolumeValue, -80f, 0f ) );
+                SetSliderValue( sliderName, DecibelToPercentage( storedVolumeValue, -60f, 10f ) );
 
             }
 
@@ -56,7 +56,7 @@ namespace TeamBracket.Audio {
             musicSliders[ sliderName ].value = value;
         }
 
-        // min + (value * (max - min)) = Decibel (-80db - 0db)
+        // min + (value * (max - min)) = Decibel (-80db - 20db)
         private float PercentageToDecibel( float value, float min, float max ) {
             return Mathf.Clamp( min + value * ( max - min ), min, max );
         }
@@ -68,7 +68,7 @@ namespace TeamBracket.Audio {
 
         private void OnSliderValueChanged( string sliderName ) {
 
-            float newVolumeValue = PercentageToDecibel( musicSliders[ sliderName ].value, -80f, 0f );
+            float newVolumeValue = PercentageToDecibel( musicSliders[ sliderName ].value, -60f, 10f );
 
             audioMixers[ sliderName ].SetFloat( sliderName, newVolumeValue );
 

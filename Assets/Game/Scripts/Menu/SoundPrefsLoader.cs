@@ -56,6 +56,7 @@ namespace TeamBracket.Audio {
 
             foreach ( AudioMixer mixer in audioMixers ) {
 
+                // If no value is found, it defaults to 0 db.
                 float savedValue = PlayerPrefs.GetFloat( mixer.name );
                 mixer.SetFloat( mixer.name, savedValue );
 

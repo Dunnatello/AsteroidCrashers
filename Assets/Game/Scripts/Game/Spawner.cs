@@ -33,7 +33,6 @@ namespace TeamBracket {
             while ( this.enabled ) {
 
                 yield return new WaitForSeconds( spawnInterval );
-                Debug.Log( "SPAWNING" );
 
                 int numObjectsToSpawn = Random.Range( 1, maxObjectsPerSpawn );
 

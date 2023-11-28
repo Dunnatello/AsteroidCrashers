@@ -3361,6 +3361,8 @@ MonoBehaviour:
     source: Sophia_C
   - title: 'Sound: "Retro, Explosion 05.wav"'
     source: MATRIXXX_
+  - title: 'Sound: "Rocket Launch"'
+    source: Jarusca
   - title: Asteroid
     source: Crashers
   fadeDuration: 1

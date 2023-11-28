@@ -19,22 +19,31 @@ namespace TeamBracket.WeaponSystem {
         [SerializeField] private GameObject currentWeapon;
         [SerializeField] private ContextualNotifications notificationScript;
 
+        [Header( "Audio" )]
+        [SerializeField] private AudioSource weaponEmptySound;
+        [SerializeField] private AudioSource errorSound;
+        [SerializeField] private AudioSource bulletFireSound;
+
         // Internal References
         private Transform weaponTransform;
         private SpriteRenderer currentWeaponSprite;
 
         // Prefabs
+        [Header( "Prefabs" )]
         [SerializeField] private GameObject bulletPrefab;
 
         // UI
+        [Header( "User Interface" )]
         [SerializeField] private TextMeshProUGUI remainingBulletsText;
         [SerializeField] private TextMeshProUGUI ammoText;
+        [SerializeField] private GameObject reloadPrompt;
 
         [Header( "Weapon Settings" )]
         [SerializeField] private float orbitRotationSpeed = 5f;
 
 
         // Weapon Attributes
+        [Header( "Weapon Attributes" )]
         private int ammo;
         private int remainingBullets;
 
@@ -104,6 +113,9 @@ namespace TeamBracket.WeaponSystem {
 
         private void ShootBullet( ) {
 
+            bulletFireSound.pitch = Random.Range( 0.9f, 1.25f );
+            bulletFireSound.Play( );
+
             GameObject newBullet = Instantiate( bulletPrefab );
             newBullet.transform.position = firePoint.position;
 
@@ -164,6 +176,8 @@ namespace TeamBracket.WeaponSystem {
 
         private void StartReload( ) {
 
+            reloadPrompt.SetActive( false );
+
             // Weapon does not need to be reloaded.
             if ( remainingBullets == maxBulletsPerClip )
                 return;
@@ -179,9 +193,11 @@ namespace TeamBracket.WeaponSystem {
 
         private void Fire( ) {
 
+            canFire = true;
+
             if ( isReloading ) {
 
-                Debug.Log( "FIXME: Play Error Sound" );
+                errorSound.Play( );
                 return;
 
             }
@@ -196,7 +212,9 @@ namespace TeamBracket.WeaponSystem {
             remainingBullets -= bulletsToFire;
 
 
-            if ( remainingBullets < 0 ) {
+            if ( remainingBullets <= 0 ) {
+
+                reloadPrompt.SetActive( true );
 
                 canFire = false;
                 remainingBullets = 0;
@@ -208,8 +226,7 @@ namespace TeamBracket.WeaponSystem {
 
             if ( !canFire ) {
 
-                // FIXME: Play Weapon Empty Sound
-                Debug.Log( "FIXME: Weapon Empty Sound" );
+                weaponEmptySound.Play( );
                 return;
 
             }
