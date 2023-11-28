@@ -6,7 +6,7 @@
  * Script Objective: Allows the player to change their audio settings in the "Settings" scene.
  * 
  * Source(s): https://docs.unity3d.com/2018.2/Documentation/ScriptReference/UI.Slider-onValueChanged.html
- *            https://discussions.unity.com/t/how-do-i-use-audiomixer-getfloat/141433
+ *            
  */
 
 using System.Collections.Generic;
@@ -24,20 +24,6 @@ namespace TeamBracket.Audio {
         // and then the dictionaries are created in Start().
         private readonly Dictionary<string, Slider> musicSliders = new( );
         private readonly Dictionary<string, AudioMixer> audioMixers = new( );
-
-
-        // Used https://discussions.unity.com/t/how-do-i-use-audiomixer-getfloat/141433 for reference in making this method.
-        private float GetVolume( string mixerName ) {
-
-            float volume;
-            bool retrievedResult = audioMixers[ mixerName ].GetFloat( mixerName, out volume );
-
-            if ( retrievedResult ) // Successfully found the volume level in decibels. Ranges between -80dB and 0dB.
-                return volume;
-            
-            return 0;
-
-        }
 
         private void Start( ) {
 

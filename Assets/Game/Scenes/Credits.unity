@@ -3063,7 +3063,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 150}
+  m_SizeDelta: {x: 1200, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2014854002
 GameObject:
@@ -3323,12 +3323,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creditsList:
-  - title: John
-    source: Smith
-  - title: Bob
-    source: Smith
-  - title: Sally
-    source: Jones
+  - title: Team
+    source: Bracket
+  - title: Game Design
+    source: Michael Dunn
+  - title: Game Design
+    source: Eric Diep
+  - title: Game Programmer
+    source: Michael Dunn
+  - title: Security Programmer
+    source: Talha Khan
+  - title: Documentation
+    source: Eric Diep
+  - title: Penetration Tester
+    source: Zachary Neal
+  - title: Penetration Tester
+    source: Darius Haynes
+  - title: 'Asset: "9t5 PBR Textures Freebies"'
+    source: 9t5
+  - title: 'Asset: "Space Game Art Pack (Extended)"'
+    source: Tatermand
+  - title: 'Asset: "2D Pixel Asteroids"'
+    source: EVPO Games
+  - title: 'Asset: "Diverse Space Skyboxes"'
+    source: Sean Duffy
+  - title: 'Asset: "Cartoon FX Remastered"'
+    source: Jean Moreno
+  - title: 'Asset: "2D Sci-Fi Weapons Pack"'
+    source: 3d.rina
+  - title: 'Asset: "Fun Casual Sounds"'
+    source: Gamemaster Audio
+  - title: 'Asset: "2D Character - Astronaut"'
+    source: COPYSPRIGHT
+  - title: 'Music: "The Lift"'
+    source: Kevin MacLeod (incompetech.com)
+  - title: 'Sound: "Pistol Dry Fire"'
+    source: Sophia_C
+  - title: 'Sound: "Retro, Explosion 05.wav"'
+    source: MATRIXXX_
   - title: Asteroid
     source: Crashers
   fadeDuration: 1

@@ -43,7 +43,6 @@ namespace TeamBracket {
 
         private int prevAsteroidsDestroyed;
 
-        private float timeSinceLastScoreModification = 0f;
         private readonly TimeStringCreator timeStringCreator = new( );
 
         private const float ToleranceEpsilon = 0.0001f;
@@ -67,7 +66,6 @@ namespace TeamBracket {
 
         private void Update( ) {
 
-            timeSinceLastScoreModification += Time.deltaTime;
 
 /*  FIXME: Rework this:
             if ( asteroidsDestroyed > prevAsteroidsDestroyed + 1 ) {
@@ -119,8 +117,6 @@ namespace TeamBracket {
                 SceneManager.LoadScene( "Error" );
 
             }
-
-            timeSinceLastScoreModification = 0f;
 
             asteroidsDestroyed += scoreIncrement;
             prevAsteroidsDestroyed = asteroidsDestroyed;

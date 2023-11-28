@@ -6,6 +6,7 @@
  * Script Objective: Allows the game to save and load audio settings.
  * 
  * Source(s): https://stackoverflow.com/questions/68902203/dont-destroy-on-load-creates-multiple-objects
+ *            https://discussions.unity.com/t/how-do-i-use-audiomixer-getfloat/141433
  * 
  */
 

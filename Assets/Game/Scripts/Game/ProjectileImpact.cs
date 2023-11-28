@@ -101,6 +101,17 @@ namespace TeamBracket {
 
         }
 
+        private void Update( ) {
+            
+            // Prevent Rigidbodies from Pausing.
+            if ( rb.IsSleeping( ) ) {
+
+                rb.WakeUp( );
+
+            }
+
+        }
+
     }
 
 }
