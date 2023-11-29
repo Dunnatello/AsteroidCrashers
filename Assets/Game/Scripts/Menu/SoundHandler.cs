@@ -44,7 +44,6 @@ namespace TeamBracket.Audio {
                 slider.onValueChanged.AddListener( delegate { OnSliderValueChanged( sliderName ); } );
 
                 float storedVolumeValue = PlayerPrefs.GetFloat( sliderName );
-                Debug.Log( "STORED VALUE: " + storedVolumeValue.ToString( ) );
 
                 SetSliderValue( sliderName, DecibelToPercentage( storedVolumeValue, -60f, 10f ) );
 

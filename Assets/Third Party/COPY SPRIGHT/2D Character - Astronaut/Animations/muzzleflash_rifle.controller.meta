@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 580b01b68099b534dbc1082938f5e509
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182650
+  packageName: 2D Character - Astronaut
+  packageVersion: 1.0
+  assetPath: Assets/COPY SPRIGHT/2D Character - Astronaut/Animations/muzzleflash_rifle.controller
+  uploadId: 410765

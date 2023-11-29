@@ -9,23 +9,26 @@
 
 using UnityEngine;
 
-public class InGameMenuHandler : MonoBehaviour
-{
+namespace TeamBracket.UI {
 
-    [SerializeField] private GameObject menu;
+    public class InGameMenuHandler : MonoBehaviour {
 
-    private void Start( ) {
-        
-        menu.SetActive( false );
+        [SerializeField] private GameObject menu;
 
-    }
+        private void Start( ) {
 
-    private void Update( ) {
-        
-        if ( Input.GetKeyDown( KeyCode.Escape ) ) {
+            menu.SetActive( false );
 
-            menu.SetActive( !menu.activeInHierarchy );
-        
+        }
+
+        private void Update( ) {
+
+            if ( Input.GetKeyDown( KeyCode.Escape ) ) {
+
+                menu.SetActive( !menu.activeInHierarchy );
+
+            }
+
         }
 
     }

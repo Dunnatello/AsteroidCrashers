@@ -13,26 +13,29 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class MenuHandler : MonoBehaviour
-{
+namespace TeamBracket.UI {
+    
+    public class MenuHandler : MonoBehaviour {
 
-    public void GoToScene( string sceneName ) {
+        public void GoToScene( string sceneName ) {
 
-        SceneManager.LoadScene( sceneName );
+            SceneManager.LoadScene( sceneName );
 
-    }
+        }
 
-    public void QuitGame( ) {
+        public void QuitGame( ) {
 
-        Application.Quit( );
+            Application.Quit( );
 
-    }
+        }
 
-    public void DeselectButton( ) {
+        public void DeselectButton( ) {
 
-        var eventSystem = EventSystem.current;
-        if ( eventSystem.alreadySelecting )
-            eventSystem.SetSelectedGameObject( null );
+            var eventSystem = EventSystem.current;
+            if ( eventSystem.alreadySelecting )
+                eventSystem.SetSelectedGameObject( null );
+
+        }
 
     }
 

@@ -66,15 +66,6 @@ namespace TeamBracket {
 
         private void Update( ) {
 
-
-/*  FIXME: Rework this:
-            if ( asteroidsDestroyed > prevAsteroidsDestroyed + 1 ) {
-
-                SceneManager.LoadScene( "Error" );
-
-            }*/
-
-
             if ( asteroidsDestroyed > totalAsteroidsSpawned || asteroidsDestroyed > prevAsteroidsDestroyed + 3 ) {
 
                 SceneManager.LoadScene( "Error" );
@@ -153,7 +144,6 @@ namespace TeamBracket {
 
             ToggleGrayScale( true );
 
-            Debug.Log( "GAME OVER" );
             stopwatch.ToggleStopwatch( false );
 
             float timeSurvived = stopwatch.GetStopwatchTime( );

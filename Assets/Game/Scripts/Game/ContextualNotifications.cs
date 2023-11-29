@@ -1,5 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Team: Team Bracket (Team 1)
+ * Course: CSC-440-101
+ * 
+ * Name: Contextual Notifications
+ * Script Objective: Shows/hides on screen text based on the current state of the game. Used to show "Reloading..." and "Respawning.." text to the player.
+ * 
+ */
+
 using UnityEngine;
 
 namespace TeamBracket {
@@ -29,12 +36,6 @@ namespace TeamBracket {
 
                     respawnText.SetActive( isVisible );
                     reloadText.SetActive( false );
-/*                    if ( reloadText.activeInHierarchy ) {
-
-                        ToggleTextVisiblity( "Reload", false );
-
-                    }*/
-
                     break;
 
                 case "Reload":

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d7ec1186171bd164ab3331e9de817378
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182650
+  packageName: 2D Character - Astronaut
+  packageVersion: 1.0
+  assetPath: Assets/COPY SPRIGHT/2D Character - Astronaut/Animations/weapon_sycthe_down.controller
+  uploadId: 410765

@@ -18,7 +18,6 @@ namespace TeamBracket {
 
             if ( other.gameObject.CompareTag( "Player" ) ) {
 
-                Debug.Log( "CAUGHT PLAYER" );
                 healthScript.PlayerDied( true );
 
             }
