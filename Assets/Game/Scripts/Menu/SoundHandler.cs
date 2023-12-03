@@ -30,7 +30,6 @@ namespace TeamBracket.Audio {
             // Populate dictionaries.
             foreach ( var musicGroup in audioMixerList ) {
 
-                Debug.Log( "GROUP NAME " + musicGroup.name );
                 audioMixers[ musicGroup.name ] = musicGroup;
 
             }

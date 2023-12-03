@@ -56,7 +56,6 @@ namespace TeamBracket.AI {
             bool isMoving = moveDirection != 0;
             animator.SetInteger( "MoveDirection", moveDirection );
             animator.SetBool( "IsMoving", isMoving );
-            //animator.SetBool( "Grounded", grounded );
 
             character.flipX = moveDirection == 1;
 

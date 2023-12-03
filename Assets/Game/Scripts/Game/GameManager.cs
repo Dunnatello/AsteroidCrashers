@@ -43,6 +43,9 @@ namespace TeamBracket {
 
         private int prevAsteroidsDestroyed;
 
+        private float gameRunningTime;
+        private bool gameOver = false;
+
         private readonly TimeStringCreator timeStringCreator = new( );
 
         private const float ToleranceEpsilon = 0.0001f;
@@ -67,6 +70,15 @@ namespace TeamBracket {
         private void Update( ) {
 
             if ( asteroidsDestroyed > totalAsteroidsSpawned || asteroidsDestroyed > prevAsteroidsDestroyed + 3 ) {
+
+                SceneManager.LoadScene( "Error" );
+
+            }
+
+            if ( !gameOver )
+                gameRunningTime++;
+
+            if ( stopwatch.GetStopwatchTime( ) > gameRunningTime + 5f ) {
 
                 SceneManager.LoadScene( "Error" );
 
@@ -129,12 +141,13 @@ namespace TeamBracket {
             if ( ( Mathf.Abs( timeSurvived / Mathf.Max( 1, asteroidsDestroyed ) ) - weaponScript.FireDelay ) < ToleranceEpsilon )
                 isScoreValid = false;
 
-
             // If the total number of asteroids spawned exceeds the amount possible per interval, invalide the score.
             if ( ( ( totalAsteroidsSpawned / timeSurvived ) * spawnerScript.SpawnInterval ) > spawnerScript.MaxObjectsPerSpawn )
                 isScoreValid = false;
 
-
+            // If the total time survived is greater than the time the game has been running plus 5 seconds, invalidate the score.
+            if ( timeSurvived > gameRunningTime + 5f )
+                isScoreValid = false;
 
             return isScoreValid;
 
@@ -145,6 +158,7 @@ namespace TeamBracket {
             ToggleGrayScale( true );
 
             stopwatch.ToggleStopwatch( false );
+            gameOver = true;
 
             float timeSurvived = stopwatch.GetStopwatchTime( );
 
