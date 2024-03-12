@@ -8,7 +8,7 @@ This involves architecture and design, code review, risk analysis, penetration t
 
 Our main objective was to secure the high scores aspect of the game to make it harder for attackers to modify their scores. This involved all of the processes listed above.
 <p align="center"><img src="https://github.com/Dunnatello/AsteroidCrashers/blob/main/GitHub%20Readme%20Data/High%20Scores%20Scene.png" width="750"></img></p>
-<p align="center"><b>Figure 3:</b> Top scores will appear in the high scores scene. Scores are encrypted and saved to file.</p>
+<p align="center"><b>Figure 1:</b> Top scores will appear in the high scores scene. Scores are encrypted and saved to file.</p>
 
 ## Asteroid Crashers
 The game, <i>Asteroid Crashers</i>, features an astronaut that has to avoid being hit by asteroids by either moving out of the way or shooting asteroids to gain points. With only three lives, the astronaut must try to survive as long as possible. Once the astronaut has been hit by an asteroid or falls off the map three times, the game will end and the player will be able to see their score and a list of high scores.
@@ -32,6 +32,7 @@ Note: The anti-cheat consists of validation checks that are present in [Assets/G
 
 The validation checks are done in realtime and after the player finishes the game. Realtime checks are done in the <b>Update()</b> method (checked every frame) while final checks are done in the <b>ScoreValidation()</b> method (checked once the game is completed).  
 
+More information about the anti-cheat as well as information on the penetration testing can be found in the final report referenced above.  
 <p align="center"><img src="https://github.com/Dunnatello/AsteroidCrashers/blob/main/GitHub%20Readme%20Data/Modification%20Detected.png" width="750"></img></p>
 <p align="center"><b>Figure 3:</b> When the game is improperly modified using third party software, this screen will appear.</p>
 
