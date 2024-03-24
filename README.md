@@ -44,7 +44,7 @@ However, attackers could influence other aspects of the game if they were determ
 | Team Member  | GitHub Profile  | Roles |
 | ------------- | ------------- | ------------- |
 | Eric Diep | <p align="center"><img src="https://avatars.githubusercontent.com/u/109764701" width="40"></img><br>[@eric-diep](https://github.com/eric-diep)</p> | Penetration Testing, Team Contact, Documentation |
-| Michael Dunn | <p align="center"><img src="https://avatars.githubusercontent.com/u/11823777" width="40"></img><br>[@Dunnatelo](https://www.github.com/Dunnatello)</p> | Project Lead, Game Development, Documentation |
+| Michael Dunn | <p align="center"><img src="https://avatars.githubusercontent.com/u/11823777" width="40"></img><br>[@Dunnatello](https://www.github.com/Dunnatello)</p> | Project Lead, Game Development, Documentation |
 | Darius Haynes | <p align="center"><img src="https://avatars.githubusercontent.com/u/143749525" width="40"></img><br>[@SSGHOKAGE](https://github.com/SSGHOKAGE)</p> | Penetration Testing, Risk Analysis |
 | Talha Khan | <p align="center"><img src="https://avatars.githubusercontent.com/u/90275404" width="40"></img><br>[@NotTK](https://www.github.com/NotTK)</p> | Game Development, Risk Analysis   |
 | Zachary Neal | <p align="center"><img src="https://avatars.githubusercontent.com/u/144372211" width="40"></img><br>[@zneal2002](https://github.com/zneal2002)</p> | Penetration Testing, Risk Analysis |
