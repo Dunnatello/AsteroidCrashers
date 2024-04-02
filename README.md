@@ -30,14 +30,15 @@ Although we worked to make sure that the number of asteroids destroyed was not m
 
 Note: The anti-cheat consists of validation checks that are present in [Assets/Game/Scripts/Game/GameManager.cs](https://github.com/Dunnatello/AsteroidCrashers/blob/main/Assets/Game/Scripts/Game/GameManager.cs)  
 
-The validation checks are done in realtime and after the player finishes the game. Realtime checks are done in the <b>Update()</b> method (checked every frame) while final checks are done in the <b>ScoreValidation()</b> method (checked once the game is completed).  
+The validation checks are done in realtime and after the player finishes the game. Realtime checks are done in the `Update()` method (checked every frame) while final checks are done in the `ScoreValidation()` method (checked once the game is completed).  
 
-More information about the anti-cheat as well as information on the penetration testing can be found in the final report referenced above.  
+<i>More information about the anti-cheat as well as information on the penetration testing can be found in the final report referenced above.</i>  
 <p align="center"><img src="https://github.com/Dunnatello/AsteroidCrashers/blob/main/GitHub%20Readme%20Data/Modification%20Detected.png" width="750"></img></p>
 <p align="center"><b>Figure 3:</b> When the game is improperly modified using third party software, this screen will appear.</p>
 
 ### Final Words
-Secure software engineering is a continuous process that requires all developers to consider how their code can be used. Although we were able to add anti-cheat measures to our game to prevent attackers from influencing the high score directly, a determined and knowledgeable person could eventually find a way to influence the score determination process as shown in our penetration testing. We were able to mostly secure the high score process to ensure that high scores are validated and that memory manipulation of the high score variables causes the game to end.
+Secure software engineering is a continuous process that requires all developers to consider how their code can be used. Although we were able to add anti-cheat measures to our game to prevent attackers from influencing the high score directly, a determined and knowledgeable person could eventually find a way to influence the score determination process as shown in our penetration testing. We were able to mostly secure the high score process to ensure that high scores are validated and that memory manipulation of the high score variables causes the game to end.  
+
 However, attackers could influence other aspects of the game if they were determined enough as demonstrated in our penetration testing. Without server validation, securing a local game is difficult since the attacker already has all of the resources that they need by downloading the game. Applying secure software principles requires dedication from developers in order to continuously improve their software to compete against committed attackers. Although it is not possible to completely thwart attackers, developers can design and develop their programs to be written as securely as possible using similar techniques that were used in this project.
 
 ## Team Members
