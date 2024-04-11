@@ -42,13 +42,13 @@ Secure software engineering is a continuous process that requires all developers
 However, attackers could influence other aspects of the game if they were determined enough as demonstrated in our penetration testing. Without server validation, securing a local game is difficult since the attacker already has all of the resources that they need by downloading the game. Applying secure software principles requires dedication from developers in order to continuously improve their software to compete against committed attackers. Although it is not possible to completely thwart attackers, developers can design and develop their programs to be written as securely as possible using similar techniques that were used in this project.
 
 ## Team Members
-| Team Member  | GitHub Profile  | Roles |
-| ------------- | ------------- | ------------- |
-| Eric Diep | <p align="center"><img src="https://avatars.githubusercontent.com/u/109764701" width="40"></img><br>[@eric-diep](https://github.com/eric-diep)</p> | Penetration Testing, Team Contact, Documentation |
-| Michael Dunn | <p align="center"><img src="https://avatars.githubusercontent.com/u/11823777" width="40"></img><br>[@Dunnatello](https://www.github.com/Dunnatello)</p> | Project Lead, Game Development, Documentation |
-| Darius Haynes | <p align="center"><img src="https://avatars.githubusercontent.com/u/143749525" width="40"></img><br>[@SSGHOKAGE](https://github.com/SSGHOKAGE)</p> | Penetration Testing, Risk Analysis |
-| Talha Khan | <p align="center"><img src="https://avatars.githubusercontent.com/u/90275404" width="40"></img><br>[@NotTK](https://www.github.com/NotTK)</p> | Game Development, Risk Analysis   |
-| Zachary Neal | <p align="center"><img src="https://avatars.githubusercontent.com/u/144372211" width="40"></img><br>[@zneal2002](https://github.com/zneal2002)</p> | Penetration Testing, Risk Analysis |
+| Team Member | Roles |
+| ------------- | ------------- |
+| <p align="center"><img src="https://avatars.githubusercontent.com/u/109764701" width="40"></img><br>[@eric-diep](https://github.com/eric-diep)</p> | Penetration Testing, Team Contact, Documentation |
+| <p align="center"><img src="https://avatars.githubusercontent.com/u/11823777" width="40"></img><br>[@Dunnatello](https://www.github.com/Dunnatello)</p> | Project Lead, Game Development, Documentation |
+| <p align="center"><img src="https://avatars.githubusercontent.com/u/143749525" width="40"></img><br>[@SSGHOKAGE](https://github.com/SSGHOKAGE)</p> | Penetration Testing, Risk Analysis |
+| <p align="center"><img src="https://avatars.githubusercontent.com/u/90275404" width="40"></img><br>[@NotTK](https://www.github.com/NotTK)</p> | Game Development, Risk Analysis   |
+| <p align="center"><img src="https://avatars.githubusercontent.com/u/144372211" width="40"></img><br>[@zneal2002](https://github.com/zneal2002)</p> | Penetration Testing, Risk Analysis |
 
 ## Known Issues
 - Asteroids will regularly stop and float above the platform for a second before impact. We tried fixing this during development, but were unable due to time constraints.
