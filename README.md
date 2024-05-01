@@ -1,3 +1,5 @@
+<p align="center"><img src="https://github.com/Dunnatello/AsteroidCrashers/blob/main/GitHub%20Readme%20Data/AsteroidCrashersGraphic.png" /> </p>
+
 # Asteroid Crashers
 ## Team Bracket
 
